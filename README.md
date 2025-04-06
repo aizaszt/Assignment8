@@ -6,3 +6,6 @@ Output in Pycharm
 
 Inserting and Updating 
 ![image](https://github.com/user-attachments/assets/d03e73d2-77b5-4e69-96d5-13963d3840f6)
+
+delete and search by id
+![image](https://github.com/user-attachments/assets/5d2ce9ac-b0d4-4da6-8397-1fc2ec2edacc)
