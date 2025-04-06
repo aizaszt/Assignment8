@@ -31,7 +31,7 @@ class DAO:
 
         row = self.__cursor.fetchone()
         if row :
-            employee = Employee(id=row[0], name=row[1], position=row[2], salary=row[3], hire_date=row[4])
+            employee = Employee( id=row[0], name=row[1], position=row[2],salary=row[3], hire_date=row[4], )
         else:
             employee = None
 
@@ -40,10 +40,10 @@ class DAO:
     def insert(self, employee : Employee):
 
         sql = '''
-            INSERT INTO person(name, position, salary, hire_date)
+            INSERT INTO employee(name, position, salary, hire_date)
             VALUES(?, ? , ?, ?) 
         '''
-        self.__cursor.execute(sql, (employee.name, employee.position, employee.set_salary(),  employee.hire_date))
+        self.__cursor.execute(sql, (employee.name, employee.position, employee.set_salary(employee.salary), employee.hire_date))
         self.__conn.commit()
 
         return self.__cursor.lastrowid
@@ -51,19 +51,19 @@ class DAO:
     def update(self, employee):
 
         sql = '''
-            UPDATE person
+            UPDATE employee
             SET name = ?, position = ?, hire_date=?
             WHERE id = ?
         '''
 
-        self.__cursor.execute(sql, (employee.name, employee.position, employee.set_salary(), employee.hire_date))
+        self.__cursor.execute(sql, (employee.name, employee.position, employee.set_salary(employee.salary), employee.hire_date))
         self.__conn.commit()
 
         return  self.__cursor.rowcount
 
     def delete(self, id):
         sql = '''
-            DELETE FROM person
+            DELETE FROM employee
             WHERE id = ?
         '''
         self.__cursor.execute(sql,(id,))
